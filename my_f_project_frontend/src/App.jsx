@@ -1,29 +1,38 @@
+import { useState, useEffect } from "react";
+
 import Card from "./components/cards";
 import Form from "./components/forms";
 
-import { useState, useEffect } from "react";
-
 function App() {
-  const [fileItemQuote, setFileItemQuote] = useState(null);
-      const fetchFileItemQuote = async () => {
-        const res = await fetch('http://127.0.0.1:8000/api/v1/files');
-        if (!res.ok) throw new Error('Failed to fetch');
-        const data = await res.json();
-        setFileItemQuote(data);
-    };
+  const [fileItemQuote, setFileItemQuote] = useState([]);
+
+  const fetchFiles = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/v1/files');
+      if (!response.ok) throw new Error('Failed to fetch');
+      const data = await response.json();
+      setFileItemQuote(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
-    fetchFileItemQuote();
+    fetchFiles();
   }, []);
-
-  const cards = Array.isArray(fileItemQuote) ? fileItemQuote : [];
 
   return (
     <div className="p-5">
+      <h4 className="text-center mb-4">My File Gallery</h4>
       <hr />
-      <Card card_contents={cards} />
-      <Form />
+      <div className="mb-5">
+        <Form onSuccess={fetchFiles} />
+      </div>
+    
+      <hr />
+      <Card card_contents={fileItemQuote} />
     </div>
   );
 }
+
 export default App;
