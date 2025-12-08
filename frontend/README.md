@@ -1,16 +1,29 @@
-# React + Vite
+## Gallery App
+All backend business logic seamlessly integrates with the `backend/gallery` project, a sophisticated Django-React application powered by Django REST Framework.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+API Document - `http://127.0.0.1:8000`
 
-Currently, two official plugins are available:
+### Project Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#### Backend
 
-## React Compiler
+- Go to - `cd backend`
+- Setting up a virtualenv
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+    ```
+    cd ~
+    python3 -m venv env
+    source ~/env/bin/activate
+    source venv/bin/activate
+    Install the Python dependencies for the project
+    ```
+- Install requirements - `pip install -r requirements/development.txt`
+- Run the development server - `python manage.py runserver 0:8000`
+- Visit `127.0.0.1:8000` on your browser and see that the project is running.
 
-## Expanding the ESLint configuration
+#### Frontend
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Go to - `cd frontend`
+- Install requirements - `npm install`
+- Run the development server - `npm run dev`
+- Visit `localhost:5173` on your browser and see that the project is running.
