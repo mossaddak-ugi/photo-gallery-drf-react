@@ -27,10 +27,13 @@ function NavBar() {
                             // If user is NOT logged in
                             <>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/">Sign Up</Link>
+                                    <Link className="nav-link" to="/signup">Sign Up</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/login">Login</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/calculator">Calculator</Link>
                                 </li>
                             </>
                         ) : (
